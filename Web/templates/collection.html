@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="side col-sm">
+        <form method="POST" class="top">
+            <h5>S3 Enumeration</h5>
+            <button type="submit" class="btn btn-primary" name="action" value="s3Enumeration">Search</button>
+
+            <h5 style="margin-top: 30px">Specific IP Action</h5>
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="attributesValue">IP</label>
+                    <input type="text" class="form-control" id="specificIPAction" name="attributesValue" placeholder="Enter IP" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="action" value="specificIPAction">Search</button>
+{#            <button type="submit" class="btn btn-primary" name="action" value="specificIPAction" onclick="getId()">Search</button>#}
+
+            <h5 style="margin-top: 30px">Specific User Activity</h5>
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="attributesValue">UserAgent Activity</label>
+                    <input type="text" class="form-control" id="attributesValue" name="attributesValue"
+                           placeholder="Enter specific user agent activity" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="action" value="specificUserAgentActivity">Search</button>
+
+            <h5 style="margin-top: 30px">S3 Bucket Exfiltration</h5>
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="attributesValue">Request Parameter</label>
+                    <input type="text" class="form-control" id="attributesValue" name="attributesValue"
+                           placeholder="Enter a command invoked with a specific IP address" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="action" value="s3BucketExfiltration">Search</button>
+
+            <h5 style="margin-top: 30px">Specific API Activity</h5>
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="attributesValue">Request Parameter</label>
+                    <input type="text" class="form-control" id="attributesValue" name="attributesValue"
+                           placeholder="Enter a command invoked with a specific IP address" />
+                </div>
+                <div class="form-group">
+                    <label for="attributesValue">Source IP Address</label>
+                    <input type="text" class="form-control" id="attributesValue" name="attributesValue"
+                           placeholder="Enter a source IP address" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="action" value="s3BucketExfiltration">Search</button>
+        </form>
+        </div>
+        <div class="top col-sm-10">
+            <h3 align="center">Hunting For Collection Tactic</h3>
+            <div style="overflow-x: auto;">
+                {% if boolean == True %}
+                    {% for table in tables %}
+                        {{ table|safe }}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

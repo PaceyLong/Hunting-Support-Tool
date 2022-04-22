@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <form method="POST" class="top">
+        <h3 align="center">Get all events from CloudTrail</h3>
+        <div class="input-group">
+            <div class="form-group" style="margin-right: 10px">
+                <label for="attributesKey">Attributes Key</label>
+                <input type="text" class="form-control" id="attributesKey" name="attributesKey" placeholder="Enter attributes key" />
+            </div>
+            <div class="form-group">
+                <label for="attributesValue">Attributes Value</label>
+                <input type="text" class="form-control" id="attributesValue" name="attributesValue" placeholder="Enter attributes value" />
+            </div>
+        </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <div style="overflow-x: auto;">
+        {% if boolean == True %}
+            {% for table in tables %}
+                {{ table|safe }}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
